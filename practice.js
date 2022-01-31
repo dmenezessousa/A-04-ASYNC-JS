@@ -3,14 +3,36 @@
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Function that returns a promise.
-const fetchData = require('./fetchDataLibrary')
-
+const fetchData = require("./fetchDataLibrary");
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 10. Call fetchData (which returns a promise) and use the .then()  method to log the value the promise resolves with to the javascript console.
+// 10. Call fetchData (which returns a promise) and use the .then()
+//method to log the value the promise resolves with to the javascript console.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+fetchData
+  .then((user) => {
+    console.log("Username: ", user.name, "Age: ", user.age);
+  })
+  .catch((err) => {
+    console.log("User not found: ", err);
+  })
+  .finally(() => {
+    console.log("Data information completed");
+  });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 11. Call fetchData (which returns a promise) and use the async/await method to log the value the promise resolves with to the javascript console.
+// 11. Call fetchData (which returns a promise) and use the async/await method
+//to log the value the promise resolves with to the javascript console.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+async function getUserData() {
+  try {
+    const user = await fetchData();
+    console.log("Username: ", user.name, "Age: ", user.age);
+  } catch (err) {
+    console.log("Error message: ", err);
+  }
+}
+
+getUserData();
