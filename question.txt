@@ -1,17 +1,61 @@
 1. What does it mean when we say javascript is asynchronous?
 
+A: It means that javascript runs the code line by line without stoping, 
+meaning even if there is a setTimeout somewhere it ill still run the next line without waiting for it. 
+javascript will set that part aside and run it later.
+
 2. What are javascript promises?
+
+A: promise will  return a value in the future,
+also it can turn asynchronous action's into a synchronous method, 
+However that promise could be fullfill or reject and then we can act on it.
 
 3. What does it mean when a promise resolves?
 
+A:It means it return the what ever the promise was successfully.
+
 4. What does it mean when a promise rejects?
+
+A: It means the promise did not return the data successfully.
 
 5. Explain the use of .then() on promises
 
+A: .then, performes as actions when the promises ressolves.
+
 6. 5. Explain the use of .catch() on promises
+
+A: .catch, performs an actions whenever the promises rejects.
 
 7. Explain the use of .finally() on promises
 
+A: .finally, performs the actions no matter the outcome.
+  if it resolves or rejects the action will be perfomed.
+
 8. Explain async functions and how async/await are used.
 
+A: The async/await turns asynchronous, 
+promise-based behavior to be written in a cleaner style, 
+avoiding the need to explicitly configure promise chains.
+
 9. Provide one example of how promises can be used.
+
+function checkNumber() {
+  return new Promise((resolve, reject) => {
+    if (Math.random() > 0.5) {
+      resolve('Number given');
+    } else {
+      reject(new Error('Failed to give a high number'));
+    }
+  });
+}
+
+checkNumber()
+  .then((number) => {
+    console.log(number);
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+  .finally(() => {
+    console.log('Experiment completed');
+  });
